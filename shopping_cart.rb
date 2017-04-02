@@ -8,7 +8,16 @@ class ShoppingCart
     @products = []
   end
 
-  def add_product(name,base_price,tax_rate,qty)
+  def add_product(name,base_price,tax_class,qty)
+
+    case tax_class
+    when "standard"
+      tax_rate = 0.10
+    when "imported"
+      tax_rate = 0.14
+    when "exempt"
+      tax_rate = 0.00
+    end
 
     qty.times do
       @products.push(Product.new(name,base_price,tax_rate))
