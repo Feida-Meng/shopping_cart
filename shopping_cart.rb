@@ -8,10 +8,15 @@ class ShoppingCart
     @products = []
   end
 
-  def add_products(name,base_price,tax_rate)
-    @products.push(Product.new(name,base_price,tax_rate))
+  def add_product(name,base_price,tax_rate,qty)
+    qty.times do
+      @products.push(Product.new(name,base_price,tax_rate))
+    end
+
 
   end
+
+  def remove_product(name,)
 
 end
 
