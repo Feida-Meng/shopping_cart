@@ -2,21 +2,33 @@ require_relative "product"
 
 class ShoppingCart
 
-
-  def initialize(argument)
-    @argument = argument
+  attr_reader :name, :products
+  def initialize(name)
+    @name
     @products = []
   end
 
   def add_product(name,base_price,tax_rate,qty)
+
     qty.times do
       @products.push(Product.new(name,base_price,tax_rate))
     end
 
-
   end
 
-  def remove_product(name,)
+  def remove_product(name,qty)
+    product_to_be_removed = @products.select {|p| p.name == name}
+    total_qty = product_to_be_removed.length
+
+      if qty.to_i > total_qty
+        puts "Learn how to count first!"
+      elsif
+
+        @products -= product_to_be_removed[ (total_qty - qty - 1),qty ]
+
+      end
+
+  end
 
 end
 
